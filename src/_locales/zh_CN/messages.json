@@ -1,0 +1,168 @@
+{
+  "extName": {
+    "message": "SponsorBlock AI"
+  },
+  "extDescription": {
+    "message": "使用 LLM 自动检测 YouTube 视频中的赞助片段并提交至 SponsorBlock。"
+  },
+  "extSubtitle": {
+    "message": "基于 LLM 的赞助内容检测"
+  },
+  "labelApiBaseUrl": {
+    "message": "API 地址"
+  },
+  "placeholderApiBaseUrl": {
+    "message": "https://api.openai.com/v1"
+  },
+  "hintApiBaseUrl": {
+    "message": "OpenAI 兼容的 API 端点"
+  },
+  "labelApiKey": {
+    "message": "API 密钥"
+  },
+  "placeholderApiKey": {
+    "message": "sk-..."
+  },
+  "labelModel": {
+    "message": "模型名称"
+  },
+  "placeholderModel": {
+    "message": "gpt-4o-mini"
+  },
+  "hintModel": {
+    "message": "任何 OpenAI 兼容的模型"
+  },
+  "btnSaveSettings": {
+    "message": "保存设置"
+  },
+  "btnRescan": {
+    "message": "🔁 重新扫描此视频"
+  },
+  "hintRescan": {
+    "message": "强制重新检测，即使已有片段数据"
+  },
+  "footerText": {
+    "message": "检测到的片段会自动提交至 SponsorBlock。"
+  },
+  "statusAllFieldsRequired": {
+    "message": "请填写所有字段"
+  },
+  "statusInvalidUrl": {
+    "message": "无效的 API 地址"
+  },
+  "statusSaving": {
+    "message": "保存中..."
+  },
+  "statusSaved": {
+    "message": "设置已保存 ✓"
+  },
+  "statusSaveFailed": {
+    "message": "保存失败：$MSG$",
+    "placeholders": {
+      "msg": { "content": "$1", "example": "存储错误" }
+    }
+  },
+  "statusCannotAccessTab": {
+    "message": "无法访问当前标签页"
+  },
+  "statusScanning": {
+    "message": "扫描中..."
+  },
+  "statusRescanStarted": {
+    "message": "重新扫描已启动！请查看 YouTube 页面上的结果。"
+  },
+  "statusOpenYoutubeFirst": {
+    "message": "请先打开一个 YouTube 视频页面"
+  },
+  "resultAlreadyProcessed": {
+    "message": "24 小时内已处理过此视频"
+  },
+  "resultAlreadyHasSegments": {
+    "message": "SponsorBlock 上已有 $NUM$ 个片段",
+    "placeholders": {
+      "num": { "content": "$1", "example": "3" }
+    }
+  },
+  "resultLlmError": {
+    "message": "LLM 错误：$MSG$",
+    "placeholders": {
+      "msg": { "content": "$1", "example": "网络错误" }
+    }
+  },
+  "resultNoSegments": {
+    "message": "LLM 未检测到赞助片段"
+  },
+  "resultSubmitFailed": {
+    "message": "检测到 $NUM$ 个片段，但提交失败：$MSG$",
+    "placeholders": {
+      "num": { "content": "$1", "example": "2" },
+      "msg": { "content": "$2", "example": "请求频率限制" }
+    }
+  },
+  "resultSubmitted": {
+    "message": "已通过 $MODEL$ 提交 $NUM$ 个片段",
+    "placeholders": {
+      "num": { "content": "$1", "example": "3" },
+      "model": { "content": "$2", "example": "gpt-4o-mini" }
+    }
+  },
+  "resultNoTranscript": {
+    "message": "没有可用的字幕"
+  },
+  "badgeSubmitted": {
+    "message": "✓ 片段已提交！正在刷新页面以启用跳过..."
+  },
+  "badgeReanalyzing": {
+    "message": "AI 正在重新分析..."
+  },
+  "badgeAnalyzing": {
+    "message": "AI 正在分析..."
+  },
+  "errorSettingsNotConfigured": {
+    "message": "LLM 设置未配置。请在插件弹窗中填写 API 地址、密钥和模型名称。"
+  },
+  "errorLlmTimeout": {
+    "message": "LLM 请求超时（30 秒）—— API 可能响应过慢或不可达"
+  },
+  "errorLlmApi": {
+    "message": "LLM API 错误 $STATUS$：$MSG$",
+    "placeholders": {
+      "status": { "content": "$1", "example": "429" },
+      "msg": { "content": "$2", "example": "请求过多" }
+    }
+  },
+  "errorSponsorblockQuery": {
+    "message": "SponsorBlock 查询失败：$STATUS$",
+    "placeholders": {
+      "status": { "content": "$1", "example": "500" }
+    }
+  },
+  "labelErrorLog": {
+    "message": "⚠ 诊断日志"
+  },
+  "btnCopyErrorLog": {
+    "message": "复制到剪贴板"
+  },
+  "btnClearErrorLog": {
+    "message": "清除"
+  },
+  "errorLogEmpty": {
+    "message": "没有错误记录 —— 一切运行正常。"
+  },
+  "statusErrorLogCopied": {
+    "message": "错误日志已复制到剪贴板 ✓"
+  },
+  "statusCopyFailed": {
+    "message": "复制到剪贴板失败"
+  },
+  "statusErrorLogCleared": {
+    "message": "错误日志已清除 ✓"
+  },
+  "errorSponsorblockSubmit": {
+    "message": "SponsorBlock 提交失败：$STATUS$ $MSG$",
+    "placeholders": {
+      "status": { "content": "$1", "example": "400" },
+      "msg": { "content": "$2", "example": "请求无效" }
+    }
+  }
+}
