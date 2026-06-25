@@ -1,0 +1,168 @@
+{
+  "extName": {
+    "message": "SponsorBlock AI"
+  },
+  "extDescription": {
+    "message": "Auto-detect sponsor segments in YouTube videos using LLM and submit to SponsorBlock."
+  },
+  "extSubtitle": {
+    "message": "LLM-powered sponsor detection"
+  },
+  "labelApiBaseUrl": {
+    "message": "API Base URL"
+  },
+  "placeholderApiBaseUrl": {
+    "message": "https://api.openai.com/v1"
+  },
+  "hintApiBaseUrl": {
+    "message": "OpenAI-compatible endpoint"
+  },
+  "labelApiKey": {
+    "message": "API Key"
+  },
+  "placeholderApiKey": {
+    "message": "sk-..."
+  },
+  "labelModel": {
+    "message": "Model Name"
+  },
+  "placeholderModel": {
+    "message": "gpt-4o-mini"
+  },
+  "hintModel": {
+    "message": "Any OpenAI-compatible model"
+  },
+  "btnSaveSettings": {
+    "message": "Save Settings"
+  },
+  "btnRescan": {
+    "message": "🔁 Re-scan This Video"
+  },
+  "hintRescan": {
+    "message": "Force re-detection even if segments already exist"
+  },
+  "footerText": {
+    "message": "Detected segments are automatically submitted to SponsorBlock."
+  },
+  "statusAllFieldsRequired": {
+    "message": "All fields are required"
+  },
+  "statusInvalidUrl": {
+    "message": "Invalid base URL"
+  },
+  "statusSaving": {
+    "message": "Saving..."
+  },
+  "statusSaved": {
+    "message": "Settings saved ✓"
+  },
+  "statusSaveFailed": {
+    "message": "Failed to save: $MSG$",
+    "placeholders": {
+      "msg": { "content": "$1", "example": "Storage error" }
+    }
+  },
+  "statusCannotAccessTab": {
+    "message": "Cannot access current tab"
+  },
+  "statusScanning": {
+    "message": "Scanning..."
+  },
+  "statusRescanStarted": {
+    "message": "Re-scan started! Check the YouTube page for results."
+  },
+  "statusOpenYoutubeFirst": {
+    "message": "Open a YouTube video first, then try again"
+  },
+  "resultAlreadyProcessed": {
+    "message": "Already processed in the last 24h"
+  },
+  "resultAlreadyHasSegments": {
+    "message": "Already has $NUM$ segment(s) on SponsorBlock",
+    "placeholders": {
+      "num": { "content": "$1", "example": "3" }
+    }
+  },
+  "resultLlmError": {
+    "message": "LLM error: $MSG$",
+    "placeholders": {
+      "msg": { "content": "$1", "example": "Network error" }
+    }
+  },
+  "resultNoSegments": {
+    "message": "No sponsor segments detected by LLM"
+  },
+  "resultSubmitFailed": {
+    "message": "Detected $NUM$ segment(s) but failed to submit: $MSG$",
+    "placeholders": {
+      "num": { "content": "$1", "example": "2" },
+      "msg": { "content": "$2", "example": "Rate limited" }
+    }
+  },
+  "resultSubmitted": {
+    "message": "Submitted $NUM$ segment(s) via $MODEL$",
+    "placeholders": {
+      "num": { "content": "$1", "example": "3" },
+      "model": { "content": "$2", "example": "gpt-4o-mini" }
+    }
+  },
+  "resultNoTranscript": {
+    "message": "No transcript available"
+  },
+  "badgeSubmitted": {
+    "message": "✓ Segments submitted! Refreshing page to activate skipping..."
+  },
+  "badgeReanalyzing": {
+    "message": "AI re-analyzing..."
+  },
+  "badgeAnalyzing": {
+    "message": "AI analyzing..."
+  },
+  "errorSettingsNotConfigured": {
+    "message": "LLM settings not configured. Please set API URL, key, and model in the extension popup."
+  },
+  "errorLlmTimeout": {
+    "message": "LLM request timed out after 30s — the API may be slow or unreachable"
+  },
+  "errorLlmApi": {
+    "message": "LLM API error $STATUS$: $MSG$",
+    "placeholders": {
+      "status": { "content": "$1", "example": "429" },
+      "msg": { "content": "$2", "example": "Too many requests" }
+    }
+  },
+  "errorSponsorblockQuery": {
+    "message": "SponsorBlock query failed: $STATUS$",
+    "placeholders": {
+      "status": { "content": "$1", "example": "500" }
+    }
+  },
+  "labelErrorLog": {
+    "message": "⚠ Diagnostic Log"
+  },
+  "btnCopyErrorLog": {
+    "message": "Copy to Clipboard"
+  },
+  "btnClearErrorLog": {
+    "message": "Clear"
+  },
+  "errorLogEmpty": {
+    "message": "No errors recorded — everything is running smoothly."
+  },
+  "statusErrorLogCopied": {
+    "message": "Error log copied to clipboard ✓"
+  },
+  "statusCopyFailed": {
+    "message": "Failed to copy to clipboard"
+  },
+  "statusErrorLogCleared": {
+    "message": "Error log cleared ✓"
+  },
+  "errorSponsorblockSubmit": {
+    "message": "SponsorBlock submit failed: $STATUS$ $MSG$",
+    "placeholders": {
+      "status": { "content": "$1", "example": "400" },
+      "msg": { "content": "$2", "example": "Bad request" }
+    }
+  }
+}
