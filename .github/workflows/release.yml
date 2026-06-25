@@ -1,0 +1,64 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm run test:coverage
+
+      - name: Build
+        run: npm run build
+
+      - name: Package extension
+        run: |
+          cd dist
+          zip -r ../sponsorblock-ai-extension.zip .
+
+      - name: Generate release notes
+        run: |
+          VERSION="${{ github.ref_name }}"
+          echo "## SponsorBlock AI Extension $VERSION" > release-notes.md
+          echo "" >> release-notes.md
+          echo "### Installation" >> release-notes.md
+          echo "1. Download \`sponsorblock-ai-extension.zip\` below" >> release-notes.md
+          echo "2. Unzip to a local folder" >> release-notes.md
+          echo "3. In Chrome/Edge, go to \`chrome://extensions\`" >> release-notes.md
+          echo "4. Enable **Developer mode** (top-right toggle)" >> release-notes.md
+          echo "5. Click **Load unpacked** and select the unzipped folder" >> release-notes.md
+          echo "" >> release-notes.md
+          echo "### Changes" >> release-notes.md
+          echo "See [CHANGELOG.md](${{ github.server_url }}/${{ github.repository }}/blob/${{ github.ref_name }}/CHANGELOG.md) for details." >> release-notes.md
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ github.ref_name }}
+          body_path: release-notes.md
+          files: sponsorblock-ai-extension.zip
+          generate_release_notes: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
