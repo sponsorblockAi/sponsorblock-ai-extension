@@ -20,5 +20,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Video processing cache to avoid re-processing recently analyzed videos
 - Transcript sampling for very long videos
 
-[Unreleased]: https://github.com/<user>/sponsorblock-ai-extension/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/<user>/sponsorblock-ai-extension/releases/tag/v0.1.0
+[Unreleased]: https://github.com/sponsorblockAi/sponsorblock-ai-extension/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/sponsorblockAi/sponsorblock-ai-extension/releases/tag/v0.1.0

@@ -5,11 +5,11 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/<user>/sponsorblock-ai-extension"
+    "url": "https://github.com/sponsorblockAi/sponsorblock-ai-extension"
   },
-  "homepage": "https://github.com/<user>/sponsorblock-ai-extension#readme",
+  "homepage": "https://github.com/sponsorblockAi/sponsorblock-ai-extension#readme",
   "bugs": {
-    "url": "https://github.com/<user>/sponsorblock-ai-extension/issues"
+    "url": "https://github.com/sponsorblockAi/sponsorblock-ai-extension/issues"
   },
   "scripts": {
     "dev": "npm run build",
