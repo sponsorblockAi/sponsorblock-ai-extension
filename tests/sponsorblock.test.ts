@@ -15,11 +15,24 @@ let chromeMock: ChromeMock;
 beforeEach(() => {
   chromeMock = createChromeMock();
   (globalThis as Record<string, unknown>).chrome = chromeMock;
-  // Stub crypto.getRandomValues for Node environment
-  vi.spyOn(globalThis.crypto, 'getRandomValues').mockImplementation((arr: Uint8Array) => {
-    for (let i = 0; i < arr.length; i++) arr[i] = Math.floor(Math.random() * 256);
-    return arr;
-  });
+  // Stub crypto.getRandomValues for Node environment.
+  // vi.spyOn may fail on Node 22+ where the Web Crypto global is frozen;
+  // fall back to replacing the entire crypto object.
+  try {
+    vi.spyOn(globalThis.crypto, 'getRandomValues').mockImplementation((arr: Uint8Array) => {
+      for (let i = 0; i < arr.length; i++) arr[i] = Math.floor(Math.random() * 256);
+      return arr;
+    });
+  } catch {
+    vi.stubGlobal('crypto', {
+      getRandomValues: (arr: Uint8Array) => {
+        for (let i = 0; i < arr.length; i++) arr[i] = Math.floor(Math.random() * 256);
+        return arr;
+      },
+      randomUUID: () => '',
+      subtle: {},
+    });
+  }
 });
 
 afterEach(() => {
