@@ -1,0 +1,62 @@
+{
+  "name": "sponsorblock-ai-extension",
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/<user>/sponsorblock-ai-extension"
+  },
+  "homepage": "https://github.com/<user>/sponsorblock-ai-extension#readme",
+  "bugs": {
+    "url": "https://github.com/<user>/sponsorblock-ai-extension/issues"
+  },
+  "scripts": {
+    "dev": "npm run build",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "prebuild": "npm run clean",
+    "build": "npm run build:module && npm run build:iife-cs && npm run build:iife-inject",
+    "build:module": "cross-env BUILD_TARGET=module vite build",
+    "build:iife-cs": "cross-env BUILD_TARGET=iife-cs vite build",
+    "build:iife-inject": "cross-env BUILD_TARGET=iife-inject vite build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/ tests/",
+    "lint:fix": "eslint src/ tests/ --fix",
+    "format": "prettier --write \"src/**/*.{ts,js,css,html}\" \"tests/**/*.{ts,js}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,js,css,html}\" \"tests/**/*.{ts,js}\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "release": "npm run build",
+    "preversion": "npm run typecheck && npm run lint && npm run test",
+    "version": "node scripts/version.js",
+    "postversion": "git push && git push --tags",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,js}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{css,html,json,md}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.0",
+    "@types/chrome": "^0.0.268",
+    "@vitest/coverage-v8": "^1.6.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^9.9.0",
+    "eslint-config-prettier": "^9.1.0",
+    "happy-dom": "^20.10.6",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.8",
+    "prettier": "^3.3.0",
+    "typescript": "^5.5.0",
+    "typescript-eslint": "^8.0.0",
+    "vite": "^5.4.0",
+    "vite-plugin-static-copy": "^1.0.0",
+    "vitest": "^1.6.0"
+  }
+}
