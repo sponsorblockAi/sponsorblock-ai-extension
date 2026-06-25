@@ -1,7 +1,8 @@
 # Dependencies
 node_modules/
 
-# Build output — dist/ is committed as release artifact (do NOT ignore)
+# Build output
+dist/
 
 # Coverage
 coverage/
