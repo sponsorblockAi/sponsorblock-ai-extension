@@ -35,13 +35,16 @@ if (!isModule && !iifeEntry) {
 
 export default defineConfig({
   plugins: [
+    // vite-plugin-static-copy v4 appends the matched file's directory to `dest`,
+    // so `src/...` paths would land at dist/src/... — `stripBase` removes those
+    // leading segments and keeps the layout Chrome expects (manifest.json at root).
     viteStaticCopy({
       targets: [
-        { src: 'src/manifest.json', dest: '.' },
-        { src: 'src/popup/popup.html', dest: 'popup' },
-        { src: 'src/popup/popup.css', dest: 'popup' },
-        { src: 'src/icons/*', dest: 'icons' },
-        { src: 'src/_locales', dest: '.' },
+        { src: 'src/manifest.json', dest: '.', rename: { stripBase: 1 } },
+        { src: 'src/popup/popup.html', dest: 'popup', rename: { stripBase: 2 } },
+        { src: 'src/popup/popup.css', dest: 'popup', rename: { stripBase: 2 } },
+        { src: 'src/icons/*', dest: 'icons', rename: { stripBase: 2 } },
+        { src: 'src/_locales', dest: '.', rename: { stripBase: 1 } },
       ],
     }),
   ],

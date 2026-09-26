@@ -33,6 +33,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Verify extension layout
+        run: npm run verify:dist
+
       - name: Package extension
         run: |
           cd dist
@@ -43,12 +46,20 @@ jobs:
           VERSION="${{ github.ref_name }}"
           echo "## SponsorBlock AI Extension $VERSION" > release-notes.md
           echo "" >> release-notes.md
-          echo "### Installation" >> release-notes.md
+          echo "### First-time install" >> release-notes.md
           echo "1. Download \`sponsorblock-ai-extension.zip\` below" >> release-notes.md
-          echo "2. Unzip to a local folder" >> release-notes.md
+          echo "2. Unzip it into a folder you intend to keep — Chrome loads the extension from that folder" >> release-notes.md
           echo "3. In Chrome/Edge, go to \`chrome://extensions\`" >> release-notes.md
           echo "4. Enable **Developer mode** (top-right toggle)" >> release-notes.md
           echo "5. Click **Load unpacked** and select the unzipped folder" >> release-notes.md
+          echo "" >> release-notes.md
+          echo "### Upgrading from an older version" >> release-notes.md
+          echo "1. Unzip the new zip **over the same folder**, replacing the old files" >> release-notes.md
+          echo "2. Back in \`chrome://extensions\`, click the **Reload** (⟳) icon on the SponsorBlock AI card" >> release-notes.md
+          echo "" >> release-notes.md
+          echo "Your API key, base URL and model are kept — the extension ID is pinned by the \`key\` in" >> release-notes.md
+          echo "\`manifest.json\`, so \`chrome.storage.sync\` survives the upgrade. Loading the extension from" >> release-notes.md
+          echo "a different folder is no longer a problem either." >> release-notes.md
           echo "" >> release-notes.md
           echo "### Changes" >> release-notes.md
           echo "See [CHANGELOG.md](${{ github.server_url }}/${{ github.repository }}/blob/${{ github.ref_name }}/CHANGELOG.md) for details." >> release-notes.md

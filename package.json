@@ -19,6 +19,7 @@
     "build:module": "cross-env BUILD_TARGET=module vite build",
     "build:iife-cs": "cross-env BUILD_TARGET=iife-cs vite build",
     "build:iife-inject": "cross-env BUILD_TARGET=iife-inject vite build",
+    "verify:dist": "node scripts/verify-dist.js",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src/ tests/",
     "lint:fix": "eslint src/ tests/ --fix",
