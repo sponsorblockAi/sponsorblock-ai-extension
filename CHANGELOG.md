@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- No longer auto-reloads the YouTube page after submitting segments. A badge now tells you to refresh (or reopen the video) so SponsorBlock picks up the new data. Auto-reload interrupted playback, and SponsorBlock exposes no external API to trigger a refetch.
+
 ## [0.1.0] - Initial Release
 
 ### Added

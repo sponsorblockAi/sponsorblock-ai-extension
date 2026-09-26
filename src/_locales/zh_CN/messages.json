@@ -109,8 +109,8 @@
   "resultNoTranscript": {
     "message": "没有可用的字幕"
   },
-  "badgeSubmitted": {
-    "message": "✓ 片段已提交！正在刷新页面以启用跳过..."
+  "badgeRefreshHint": {
+    "message": "刷新页面（或下次打开）后开始跳过"
   },
   "badgeReanalyzing": {
     "message": "AI 正在重新分析..."

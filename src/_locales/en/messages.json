@@ -109,8 +109,8 @@
   "resultNoTranscript": {
     "message": "No transcript available"
   },
-  "badgeSubmitted": {
-    "message": "✓ Segments submitted! Refreshing page to activate skipping..."
+  "badgeRefreshHint": {
+    "message": "Refresh the page (or reopen the video) to start skipping"
   },
   "badgeReanalyzing": {
     "message": "AI re-analyzing..."
