@@ -30,10 +30,19 @@ SponsorBlock only re-queries segments on page load, and it exposes no external A
 #### Step 1: Install the extension
 
 1. Go to [Releases](https://github.com/<user>/sponsorblock-ai-extension/releases) and download `sponsorblock-ai-extension.zip` (or clone this repo and use the `dist/` folder directly)
-2. Unzip the file
+2. Unzip it into a folder you intend to keep — Chrome loads the extension from that folder, so don't delete it afterwards
 3. Open `chrome://extensions/` in Chrome
 4. Enable **Developer mode** (top-right toggle)
 5. Click **Load unpacked** and select the unzipped folder
+
+#### Step 1b: Upgrading to a newer version
+
+1. Download the new zip and unzip it **over the same folder**, replacing the old files
+2. Back in `chrome://extensions/`, click the **Reload** (⟳) icon on the SponsorBlock AI card
+
+Your API key, base URL and model are kept. The extension ships a fixed `key` in its manifest, so Chrome assigns it the same extension ID no matter which folder it was loaded from — `chrome.storage.sync` therefore survives upgrades (and follows you across machines signed into the same Chrome profile).
+
+> ⚠️ If you upgraded from **0.1.2 or earlier**, your settings reset once: those builds had no `key`, so their extension ID was derived from the folder path and the new ID starts with empty storage. Enter your settings again, then remove the old card — leaving both installed means two content scripts run on every YouTube page.
 
 #### Step 2: Configure your LLM
 
@@ -113,6 +122,7 @@ npm install
 
 ```bash
 npm run build        # Build to dist/
+npm run verify:dist  # Assert dist/ is loadable (manifest at root, all referenced files present)
 npm run typecheck    # TypeScript type checking
 npm run lint         # ESLint check
 npm run lint:fix     # ESLint auto-fix
@@ -121,6 +131,10 @@ npm run format:check # Prettier format check
 npm run test         # Run tests
 npm run test:watch   # Run tests in watch mode
 ```
+
+> The `key` field in `src/manifest.json` is deliberate — it pins the extension ID so users keep
+> their settings across upgrades. Deleting it makes the ID depend on the load path again, which
+> resets everyone's API config (and would change the ID again if you later list on the Web Store).
 
 #### Project Structure
 
@@ -180,10 +194,19 @@ SponsorBlock 只在页面加载时拉取片段，且没有对外暴露触发重�
 #### 第一步：安装扩展
 
 1. 前往 [Releases](https://github.com/<user>/sponsorblock-ai-extension/releases) 下载 `sponsorblock-ai-extension.zip`（或者直接 clone 本仓库，使用里面的 `dist/` 文件夹）
-2. 解压 zip 文件
+2. 解压到一个你会**长期保留**的文件夹 —— Chrome 是从该文件夹加载扩展的，之后不要删掉它
 3. 打开 Chrome 浏览器，地址栏输入 `chrome://extensions/`
 4. 打开右上角的 **开发者模式** 开关
 5. 点击 **加载已解压的扩展程序**，选择刚才解压的文件夹
+
+#### 第一步之二：升级到新版本
+
+1. 下载新版本的 zip，**解压覆盖到同一个文件夹**，替换掉旧文件
+2. 回到 `chrome://extensions/`，点击 SponsorBlock AI 卡片上的 **重新加载**（⟳）按钮
+
+API Key、Base URL、Model 都会保留。扩展在 manifest 里固定了 `key`，所以无论从哪个文件夹加载，Chrome 分配的都是同一个扩展 ID，`chrome.storage.sync` 因此能跨升级（以及跨同一 Chrome 账号的机器）保留下来。
+
+> ⚠️ 如果你是从 **0.1.2 或更早版本**升级过来的，配置会重置这一次：那些版本没有 `key`，扩展 ID 是由文件夹路径推导出来的，新 ID 的存储是空的。重新填一次设置，然后删掉旧的那张扩展卡片 —— 两个版本同时装着，YouTube 页面上会跑两份 content script。
 
 #### 第二步：配置 LLM
 
