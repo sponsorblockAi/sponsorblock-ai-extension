@@ -68,9 +68,6 @@ export const CONTENT_SCRIPT = {
   /** Delay after SPA navigation before starting transcript detection. */
   NAVIGATION_DELAY_MS: 1_500,
 
-  /** Delay before page reload (to let SponsorBlock extension pick up new segments). */
-  RELOAD_DELAY_MS: 1_500,
-
   /** Max pixels to scroll per step when scraping the transcript panel. */
   SCROLL_STEP_MAX: 2_000,
 

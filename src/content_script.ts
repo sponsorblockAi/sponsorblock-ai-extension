@@ -276,16 +276,6 @@ import { sleep } from './lib/sleep';
     });
   }
 
-  // ── Trigger SponsorBlock refresh via page reload ─────────────────
-
-  function notifySponsorBlock(): void {
-    // Cross-extension messaging doesn't work with SponsorBlock (no onMessageExternal).
-    // The only reliable way to make SponsorBlock re-query segments is a page reload.
-    // YouTube usually auto-resumes playback position on refresh.
-    showBadge(t('badgeSubmitted'), 'submitted');
-    setTimeout(() => location.reload(), CS_CONFIG.RELOAD_DELAY_MS);
-  }
-
   // ── Main processing ──────────────────────────────────────────────
 
   // AbortController for cancelling in-flight processing when navigation happens
@@ -339,8 +329,10 @@ import { sleep } from './lib/sleep';
       });
 
       if (result.action === 'submitted') {
-        showBadge('✓ ' + result.details, 'submitted');
-        notifySponsorBlock();
+        // SponsorBlock has no external API to trigger a refetch, so the new
+        // segments only reach it on the next page load. Don't reload for the
+        // user — that would interrupt playback they may be minutes into.
+        showBadge('✓ ' + result.details + ' · ' + t('badgeRefreshHint'), 'submitted');
       } else if (result.action === 'error') {
         showBadge('✗ ' + result.details, 'error');
       } else {

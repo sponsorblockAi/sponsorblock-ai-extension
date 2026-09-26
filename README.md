@@ -21,7 +21,7 @@ This extension + [SponsorBlock extension](https://sponsor.ajay.app/) = complete 
 | 3. Submit segments to SponsorBlock       | This extension             |
 | 4. Actually skip the ads during playback | **SponsorBlock extension** |
 
-The page auto-refreshes after submission so SponsorBlock picks up the new segments — ads start skipping right away.
+SponsorBlock only re-queries segments on page load, and it exposes no external API to trigger that. So new segments take effect the next time the video page loads (refresh, or reopening the video) — no playback interruption.
 
 ---
 
@@ -57,7 +57,7 @@ The page auto-refreshes after submission so SponsorBlock picks up the new segmen
 
 That's it! Open a YouTube video and the extension works automatically.
 
-> 💡 **After segments are submitted**, the page automatically refreshes. This ensures the SponsorBlock extension picks up the new data and starts skipping ads immediately. YouTube auto-resumes your playback position.
+> 💡 **After segments are submitted**, refresh the page (or reopen the video) and SponsorBlock will start skipping. The extension deliberately does _not_ auto-reload — SponsorBlock has no external API to trigger a refetch, and reloading would interrupt your playback.
 
 ### Supported LLM Providers
 
@@ -171,7 +171,7 @@ tests/
 | 3. 提交片段到 SponsorBlock | 本插件                |
 | 4. 播放时真正跳过广告      | **SponsorBlock 插件** |
 
-提交后页面自动刷新，SponsorBlock 加载刚提交的片段并开始跳过广告。
+SponsorBlock 只在页面加载时拉取片段，且没有对外暴露触发重新拉取的接口，因此新片段会在下次加载该视频页面时生效（刷新页面，或下次打开该视频）——不会打断当前播放。
 
 ---
 
@@ -207,7 +207,7 @@ tests/
 
 就这些！打开一个 YouTube 视频，扩展会自动运行。
 
-> 💡 **提交成功后**，页面会自动刷新。这确保 SponsorBlock 插件能加载到刚提交的数据并开始跳过广告。YouTube 会自动恢复播放进度。
+> 💡 **提交成功后**，刷新页面（或下次打开该视频）SponsorBlock 就会开始跳过。插件刻意**不自动刷新**：SponsorBlock 没有对外暴露重新拉取片段的接口，而刷新页面会打断你正在进行的播放。
 
 ### 支持的 LLM 服务商
 
